@@ -16,6 +16,7 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
+import injectTapEventPlugin from "react-tap-event-plugin";
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -75,6 +76,12 @@ const rootRoute = {
   component: App,
   childRoutes: createRoutes(store),
 };
+
+//Needed for onTouchTap
+//Can go away when react 1.0 release
+//Check this repo:
+//https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
 
 const render = (messages) => {
   ReactDOM.render(
