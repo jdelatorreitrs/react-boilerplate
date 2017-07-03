@@ -11,17 +11,19 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import Header from 'components/Header';
+import PageHeader from 'containers/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 import PropTypes from 'prop-types';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
+  padding: 10px;
+  margin: 0;
   display: flex;
   min-height: 100%;
   padding: 0 16px;
   flex-direction: column;
+  background-color: ${props => props.theme.mainBgColor ? props.theme.mainBgColor : 'transparent' };
 `;
 
 // For Customization Options, edit  or use
@@ -69,6 +71,7 @@ export class App extends React.Component {
               ]}
             />
             <Header />
+            <PageHeader />
             {React.Children.toArray(this.props.children)}
             <Footer />
           </div>

@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import themeProviderReducer from 'containers/ThemeProvider/reducer';
 
 /*
  * routeReducer
@@ -20,7 +21,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 // Initial routing state
 const routeInitialState = fromJS({
-  locationBeforeTransitions: null,
+  locationBeforeTransitions: null
 });
 
 /**
@@ -46,6 +47,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     global: globalReducer,
     language: languageProviderReducer,
+    theme: themeProviderReducer,
     ...asyncReducers,
   });
 }

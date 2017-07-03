@@ -2,6 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import A from './A';
+import Button from 'components/Button';
 import Img from './Img';
 import NavBar from './NavBar';
 // import HeaderLink from './HeaderLink';
@@ -31,6 +32,10 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
     changeTheme: PropTypes.func
   };
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -59,6 +64,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
           <RaisedButton label="Primary" primary={true} style={style} />
           <RaisedButton label="Secondary" secondary={true} style={style} />
           <RaisedButton label="Disabled" disabled={true} style={style} />
+          <Button>Primary</Button>
           <div style={styles.block}>
             <Toggle
               label="Theme"
