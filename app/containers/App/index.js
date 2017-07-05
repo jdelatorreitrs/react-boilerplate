@@ -9,21 +9,41 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-
-import HeaderParent from './HeaderParent';
-import MateriaUIHeader from 'containers/MHeader';
-import StyledComponentsHeader from 'containers/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 import PropTypes from 'prop-types';
-import MThemeProvider from 'containers/MThemeProvider';
+import Menu from 'components/Menu';
+import Content from 'components/Page';
 
 const AppWrapper = styled.div`
-  padding: 10px;
+  padding: 0;
   margin: 0;
   display: flex;
-  min-height: 100%;
-  padding: 0 16px;
+  height: 100%;
+  width: 100%;
+  justify-contents: flex-start;
+  flex-direction: column;
+  background-color: ${props => props.theme.mainBgColor ? props.theme.mainBgColor : 'transparent' };
+`;
+
+const PageWrapper = styled.div`
+  padding: 0;
+  margin: 0;
+  display: flex;
+  min-height: calc(100% - 100px);
+  width: 100%;
+  justify-contents: flex-start;
+  flex-direction: row;
+  background-color: ${props => props.theme.mainBgColor ? props.theme.mainBgColor : 'transparent' };
+`;
+
+const FooterWrapper = styled.div`
+  padding: 0;
+  margin: 0;
+  display: flex;
+  min-height: 100px;
+  width: 100%;
+  justify-contents: flex-end;
   flex-direction: column;
   background-color: ${props => props.theme.mainBgColor ? props.theme.mainBgColor : 'transparent' };
 `;
@@ -40,8 +60,6 @@ export class App extends React.Component {
   render() {
     return (
       <AppWrapper>
-      <MThemeProvider>
-          <div>
             <Helmet
               titleTemplate="%s - React.js Boilerplate"
               defaultTitle="React.js Boilerplate"
@@ -49,17 +67,15 @@ export class App extends React.Component {
                 { name: 'description', content: 'A React.js Boilerplate application' },
               ]}
             />
-            <HeaderParent>
-              <MateriaUIHeader />
-            </HeaderParent>
-            <HeaderParent>
-              <StyledComponentsHeader />
-            </HeaderParent>
-
-            {React.Children.toArray(this.props.children)}
-            <Footer />
-          </div>
-        </MThemeProvider>
+            <PageWrapper>
+              <Menu></Menu>
+              <Content>
+                {React.Children.toArray(this.props.children)}
+              </Content>
+            </PageWrapper>
+            <FooterWrapper>
+              <Footer />
+            </FooterWrapper>
       </AppWrapper>
     )
   }
