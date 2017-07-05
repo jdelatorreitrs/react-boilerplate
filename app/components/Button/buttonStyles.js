@@ -15,7 +15,7 @@ const buttonStyles = css`
   font-weight: bold;
   font-size: 16px;
   border: 2px solid #41addd;
-  color: rgba(0, 0, 0, 0.9);
+  color: ${props => props.theme.fontColor ? props.theme.fontColor : 'rgba(0, 0, 0, 0.5)' };
   &:active {
     background: #41addd;
     color: #fff;
