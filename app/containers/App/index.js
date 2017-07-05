@@ -10,11 +10,13 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import Header from 'components/Header';
-import PageHeader from 'containers/Header';
+import HeaderParent from './HeaderParent';
+import MateriaUIHeader from 'containers/MHeader';
+import StyledComponentsHeader from 'containers/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 import PropTypes from 'prop-types';
+import MThemeProvider from 'containers/MThemeProvider';
 
 const AppWrapper = styled.div`
   padding: 10px;
@@ -28,40 +30,17 @@ const AppWrapper = styled.div`
 
 // For Customization Options, edit  or use
 // './src/material_ui_raw_theme_file.jsx' as a template.
-import { getMuiTheme } from 'material-ui/styles';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import * as themes from './themes.js'
 
 export class App extends React.Component {
 
-  static childContextTypes = {
-    changeTheme: PropTypes.func
-  };
-
   constructor(props) {
     super(props);
-    this.state = {
-      muiTheme: getMuiTheme(themes.theme1),
-      defaultTheme: true
-    };
   }
-
-  getChildContext() {
-    return {changeTheme: this.changeTheme};
-  }
-
-  changeTheme = () => {
-    const theme = this.state.defaultTheme?themes.theme2:themes.theme1;
-    this.setState({
-      muiTheme: getMuiTheme(theme),
-      defaultTheme: !this.state.defaultTheme
-    })
-  };
 
   render() {
     return (
       <AppWrapper>
-        <MuiThemeProvider muiTheme={this.state.muiTheme}>
+      <MThemeProvider>
           <div>
             <Helmet
               titleTemplate="%s - React.js Boilerplate"
@@ -70,12 +49,17 @@ export class App extends React.Component {
                 { name: 'description', content: 'A React.js Boilerplate application' },
               ]}
             />
-            <Header />
-            <PageHeader />
+            <HeaderParent>
+              <MateriaUIHeader />
+            </HeaderParent>
+            <HeaderParent>
+              <StyledComponentsHeader />
+            </HeaderParent>
+
             {React.Children.toArray(this.props.children)}
             <Footer />
           </div>
-        </MuiThemeProvider>
+        </MThemeProvider>
       </AppWrapper>
     )
   }

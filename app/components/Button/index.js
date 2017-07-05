@@ -29,6 +29,14 @@ function Button(props) {
     );
   }
 
+  if(props.primary){
+    button = (
+      <StyledButton {...props}>
+        {Children.toArray(props.children)}
+      </StyledButton>
+    );
+  }
+
   return (
     <Wrapper>
       {button}
@@ -40,7 +48,7 @@ Button.propTypes = {
   handleRoute: PropTypes.func,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Button;
