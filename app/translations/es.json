@@ -29,5 +29,7 @@
   "boilerplate.containers.LocaleToggle.de": "de",
   "boilerplate.containers.LocaleToggle.en": "en",
   "boilerplate.containers.NotFoundPage.header": "Page not found.",
-  "boilerplate.containers.app.menu.title": "Este es el menú"
+  "boilerplate.containers.app.menu.title": "Este es el menú",
+  "boilerplate.components.Header.darkThemeButton": "Tema oscuro",
+  "boilerplate.components.Header.lightThemeButton": "Tema claro"
 }
