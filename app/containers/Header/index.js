@@ -3,8 +3,11 @@ import Button from 'components/Button';
 import { connect } from 'react-redux';
 import { changeTheme } from 'containers/ThemeProvider/actions';
 import { createStructuredSelector } from 'reselect';
-import {light, dark} from './themes'
-class Header extends React.Component {;
+import {light, dark} from './themes';
+import messages from './messages';
+import { FormattedMessage } from 'react-intl';
+
+class Header extends React.Component {
    // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -21,9 +24,13 @@ class Header extends React.Component {;
         <h1> Styled Components </h1>
         {/*<Button primary>Primary</Button>*/}
         <Button onClick={() =>
-          this.props.onChangeTheme(light)}>Light Theme</Button>
+          this.props.onChangeTheme(light)}>
+          <FormattedMessage {...messages.lightThemeButton} />
+        </Button>
         <Button onClick={() =>
-          this.props.onChangeTheme(dark)}>Dark Theme</Button>
+          this.props.onChangeTheme(dark)}>
+          <FormattedMessage {...messages.darkThemeButton} />
+        </Button>
       </div>
     );
   }

@@ -14,4 +14,12 @@ export default defineMessages({
     id: 'boilerplate.components.Header.features',
     defaultMessage: 'Features',
   },
+  lightThemeButton: {
+    id: 'boilerplate.components.Header.lightThemeButton',
+    defaultMessage: 'Light Theme',
+  },
+  darkThemeButton: {
+    id: 'boilerplate.components.Header.darkThemeButton',
+    defaultMessage: 'Dark Theme',
+  },
 });
