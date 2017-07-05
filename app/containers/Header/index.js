@@ -21,7 +21,6 @@ class Header extends React.Component {
 
     return (
       <div>
-        <h1> Styled Components </h1>
         {/*<Button primary>Primary</Button>*/}
         <Button onClick={() =>
           this.props.onChangeTheme(light)}>
